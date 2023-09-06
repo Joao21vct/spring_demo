@@ -1,7 +1,7 @@
 # Build stage
 FROM maven:3.8-openjdk-17 AS maquinabuild
 COPY . .
-RUN mvn clean package - DskipTests
+RUN mvn clean package -DskipTests
 
 # Package stage / deploy
 FROM openjdk:17-jdk-slim
