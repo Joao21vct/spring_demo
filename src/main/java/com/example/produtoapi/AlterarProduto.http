@@ -1,0 +1,9 @@
+PUT http://localhost:8081/api/produtos/atualizar/5
+Content-Type: application/json
+
+{
+"nome": "Peito de frango",
+"descricao": "Peito de frango desossado",
+"preco": 35,
+"quantidadeEstoque": 200
+}

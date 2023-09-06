@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Cadastrar Novo Produto</h1>
+<form action="api/produtos/inserirForm" method="post" id="formCadastro">
+    <label for="nome">Nome do produto:</label>
+    <input type="text" id="nome" name="nome" required>
+    <label for="descricao">Descricao do produto:</label>
+    <input type="text" id="descricao" name="descricao" required>
+    <label for="preco">Preço do produto:</label>
+    <input type="text" id="preco" name="preco" required>
+    <label for="quantidade">Quantidade do produto:</label>
+    <input type="text" id="quantidade" name="quantidade" required>
+    <button type="button" id="inserirProduto">Inserir produto</button>
+</form>
+
+<script>
+    document.getElementById("inserirProduto").addEventListener("click", function() {
+        const form = document.getElementById("formCadastro");
+        const formData = new FormData(form);
+
+        fetch("http://localhost:8081/api/produtos/inserirForm", {
+            method: "POST",
+            body: new URLSearchParams(formData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error("Erro na requisição:", error);
+            });
+    });
+</script>
+</body>
+</html>

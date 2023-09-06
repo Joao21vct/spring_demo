@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>Alterar Produto</h1>
+<form action="api/produtos/alterarForm" method="post" id="formAlterar">
+  <label for="nome">Nome do produto:</label>
+  <input type="text" id="nome" name="nome" required>
+  <label for="descricao">Descricao do produto:</label>
+  <input type="text" id="descricao" name="descricao" required>
+  <label for="preco">Preço do produto:</label>
+  <input type="text" id="preco" name="preco" required>
+  <label for="quantidade">Quantidade do produto:</label>
+  <input type="text" id="quantidade" name="quantidade" required>
+  <label for="id">id do produto:</label>
+  <input type="text" id="id" name="id" required>
+  <button type="submit" id="alterarProduto">alterar produto</button>
+</form>
+
+<script>
+  document.getElementById("alterarProduto").addEventListener("click", function() {
+    const form = document.getElementById("formAlterar");
+    const formData = new FormData(form);
+
+    fetch("http://localhost:8081/api/produtos/alterarForm", {
+      method: "POST",
+      body: new URLSearchParams(formData)
+    })
+            .then(response => response.json())
+            .then(data => {
+              console.log(data);
+            })
+            .catch(error => {
+              console.error("Erro na requisição:", error);
+            });
+  });
+</script>
+</body>
+</html>
