@@ -1,5 +1,5 @@
 # Build stage
-FROM maven:3.8-openjdk-18 AS maquinabuild
+FROM maven:3.8-openjdk-17 AS maquinabuild
 COPY . .
 RUN mvn clean package -DskipTests
 
